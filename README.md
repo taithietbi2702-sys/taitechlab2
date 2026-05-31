@@ -51,3 +51,15 @@ docker run -p 5000:5000 -e ADMIN_PASSWORD=your-secret chia-se-codelectro:latest
 3) Lưu ý bảo mật:
 	- Thiết lập `ADMIN_PASSWORD` trong biến môi trường trên host (không commit mật khẩu vào Git).
 	- Đối với production, dùng HTTPS (letsencrypt) và migrate DB nếu cần. SQLite phù hợp cho prototyping; với môi trường production cân nhắc Postgres.
+
+Deploy trên Vercel (serverless)
+
+- Tôi đã chuyển backend thành serverless FastAPI trong `api/index.py` và thêm `vercel.json`.
+- Bạn cần một hosted Postgres (ví dụ ElephantSQL) và đặt `DATABASE_URL` + `ADMIN_PASSWORD` trong Vercel Environment Variables.
+
+Sau khi push lên GitHub:
+1. Kết nối repo với Vercel.
+2. Trong Vercel dashboard → Settings → Environment Variables, thêm `DATABASE_URL` và `ADMIN_PASSWORD`.
+3. Vercel sẽ build và deploy. Logs hiện lỗi nếu DB chưa sẵn sàng.
+
+Gợi ý tạo ElephantSQL miễn phí: https://www.elephantsql.com/ — tạo instance, copy URL, dán vào `DATABASE_URL`.
