@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ 'Sửa' if post else 'Tạo mới' }}{% endblock %}
+
+{% block content %}
+  <h2>{{ 'Sửa bài' if post else 'Tạo bài mới' }}</h2>
+  <form method="post">
+    <label>Tiêu đề</label>
+    <input name="title" value="{{ post.title if post else '' }}" required />
+
+    <label>Nội dung (Markdown)</label>
+    <textarea name="content" rows="15">{{ post.content if post else '' }}</textarea>
+
+    <button type="submit">Lưu</button>
+  </form>
+  <p><a href="{{ url_for('admin_index') }}">Quay lại</a></p>
+{% endblock %}

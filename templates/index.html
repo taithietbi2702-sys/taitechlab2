@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Trang chủ{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    <h2>Chia sẻ kiến thức cho cộng đồng cơ điện tử</h2>
+    <p>Hướng dẫn, bài viết, tài liệu và dự án mẫu về Điện công nghiệp, Cơ khí, Robot và Phần mềm.</p>
+  </section>
+
+  <section class="cards">
+    <a class="card" href="{{ url_for('dien_cong_nghiep') }}">
+      <h3>Điện công nghiệp</h3>
+      <p>Mạch, PLC, động cơ, điều khiển và an toàn.</p>
+    </a>
+    <a class="card" href="{{ url_for('co_khi') }}">
+      <h3>Cơ khí</h3>
+      <p>Thiết kế chi tiết, gia công, lắp ráp và vật liệu.</p>
+    </a>
+    <a class="card" href="{{ url_for('robot') }}">
+      <h3>Robot</h3>
+      <p>Hệ thống nhúng, cảm biến, điều khiển chuyển động.</p>
+    </a>
+    <a class="card" href="{{ url_for('phan_mem') }}">
+      <h3>Phần mềm</h3>
+      <p>Lập trình nhúng, ROS, phần mềm mô phỏng và công cụ CAD/CAM.</p>
+    </a>
+  </section>
+
+{% endblock %}

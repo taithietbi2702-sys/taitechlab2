@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin - Bài viết{% endblock %}
+
+{% block content %}
+  <h2>Quản lý Bài viết</h2>
+  <p><a href="{{ url_for('admin_new') }}">Tạo bài viết mới</a> — <a href="{{ url_for('admin_logout') }}">Đăng xuất</a></p>
+  <table>
+    <thead><tr><th>Tiêu đề</th><th>Ngày</th><th>Hành động</th></tr></thead>
+    <tbody>
+      {% for p in posts %}
+      <tr>
+        <td><a href="{{ url_for('show_post', slug=p.slug) }}">{{ p.title }}</a></td>
+        <td>{{ p.created.strftime('%Y-%m-%d') }}</td>
+        <td>
+          <a href="{{ url_for('admin_edit', post_id=p.id) }}">Sửa</a>
+          <form method="post" action="{{ url_for('admin_delete', post_id=p.id) }}" style="display:inline">
+            <button type="submit" onclick="return confirm('Xóa bài viết?')">Xóa</button>
+          </form>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="3">Không có bài viết</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

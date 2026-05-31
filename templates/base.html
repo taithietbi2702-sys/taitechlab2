@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Chia sẻ Kiến thức Cơ Điện Tử - {% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Chia sẻ Kiến thức Cơ Điện Tử</h1>
+      <nav>
+        <a href="{{ url_for('index') }}">Trang chủ</a>
+        <a href="{{ url_for('dien_cong_nghiep') }}">Điện công nghiệp</a>
+        <a href="{{ url_for('co_khi') }}">Cơ khí</a>
+        <a href="{{ url_for('robot') }}">Robot</a>
+        <a href="{{ url_for('phan_mem') }}">Phần mềm</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Chia sẻ Kiến thức Cơ Điện Tử — Góp ý: contact@example.com</p>
+    </div>
+  </footer>
+</body>
+</html>
