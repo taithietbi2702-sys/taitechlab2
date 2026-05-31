@@ -1,0 +1,22 @@
+# Render manifest (template)
+# Replace `repo` with your GitHub repo in the format: <user>/<repo>
+# This file creates a Postgres instance and a Web Service that uses it.
+services:
+  - type: postgres
+    name: chia-se-db
+    plan: starter
+
+  - type: web
+    name: chia-se-web
+    env: python
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn web:app
+    plan: starter
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase: chia-se-db
+      - key: ADMIN_PASSWORD
+        value: "${ADMIN_PASSWORD}" # set in dashboard or pipeline
+
+# NOTE: After pushing this file, go to Render dashboard, create a new service from this repo and allow render.yaml to provision resources.
